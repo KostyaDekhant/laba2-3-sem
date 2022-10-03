@@ -10,4 +10,4 @@ struct FIO
 	string lastname;
 };
 
-FIO FIOInit();
+FIO FIOInit(string first, string mid, string last);

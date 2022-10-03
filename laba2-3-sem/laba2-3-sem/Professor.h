@@ -12,4 +12,4 @@ struct Professor
 	struct Human human;
 };
 
-Professor ProfessorInit();
+Professor ProfessorInit(int wg, int exp, string sub, struct Human Human);

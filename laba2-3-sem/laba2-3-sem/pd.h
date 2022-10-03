@@ -10,4 +10,4 @@ struct passport_data
 	string number;
 };
 
-passport_data passport_dataInit();
+passport_data passport_dataInit(string num, string ser);

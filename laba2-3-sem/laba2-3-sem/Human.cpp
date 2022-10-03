@@ -10,4 +10,5 @@ Human HumanInit(int inpage, struct FIO Fio, struct passport_data Pd)
 	human.age = inpage;
 	human.fio = Fio;
 	human.pd = Pd;
+	return human;
 }

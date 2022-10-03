@@ -1,8 +1,8 @@
 #pragma once
 #include "FIO.h"
 #include "pd.h"
-#include "Student.h"
-#include "Professor.h"
+//#include "Student.h"
+//#include "Professor.h"
 
 struct Human
 {
@@ -11,4 +11,4 @@ struct Human
 	int age;
 };
 
-Human HumanInit();
+Human HumanInit(int inpage, struct FIO Fio, struct passport_data Pd);
