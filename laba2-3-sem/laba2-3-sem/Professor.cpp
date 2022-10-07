@@ -15,29 +15,6 @@ Professor ProfessorInit(int wg, int exp, char *sub, struct Human Human)
 	return prof;
 }
 
-void InputProf(int* age, int* wg, int *exp, char* num, char* ser, char* first, char* mid, char* last, char* sub)
-{
-	system("cls");
-	printf("Введите фамилию преподавателя: ");
-	strcpy(last, write_str(29));
-	printf("Введите имя преподавателя: ");
-	strcpy(first, write_str(29));
-	printf("Введите отчество преподавателя: ");
-	strcpy(mid, write_str(29));
-	printf("Введите возраст: ");
-	*age = write_num(125);
-	printf("Введите номер паспорта: ");
-	strcpy(num, write_pd(4));
-	printf("Введите серию паспорта: ");
-	strcpy(ser, write_pd(6));
-	printf("Введите стаж преподавателя: ");
-	*exp = write_num(*age);
-	printf("Введите размер заработной платы: ");
-	*wg = write_num(1000000);
-	printf("Введите преподаваемый предмет: ");
-	strcpy(sub, write_str(30));
-}
-
 void OutputProf(struct Professor prof[], int count_prof, bool flag)
 {
 	system("cls");
@@ -144,14 +121,3 @@ void prof_analysis(struct Professor prof[], int count_prof)
 	_getch();
 }
 
-void prof_info(int sum_ages, int count_pr, int sum_wage, int max_wage, int min_wage, int sum_exp)
-{
-	printf("Статистика о преподавателях: \n\n");
-	printf("---------------------------------\n");
-	printf("Средний возраст преподавателя: %d\n", sum_ages / count_pr);
-	printf("Средняя стипендия преподавателя: %d\n", sum_wage / count_pr);
-	printf("Средний стаж преподавателя: %d\n", sum_exp / count_pr);
-	printf("Максимальная стипендия преподавателя: %d\n", max_wage);
-	printf("Минимальная стипендия преподавателя: %d\n", min_wage);
-	printf("---------------------------------\n");
-}

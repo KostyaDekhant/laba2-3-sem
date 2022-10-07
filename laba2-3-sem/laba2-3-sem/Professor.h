@@ -14,7 +14,5 @@ struct Professor
 };
 
 Professor ProfessorInit(int wg, int exp, char* sub, struct Human Human);
-void InputProf(int* age, int* wg, int* exp, char* num, char* ser, char* first, char* mid, char* last, char* sub);
 void OutputProf(struct Professor prof[], int count_prof, bool flag);
 void prof_analysis(struct Professor prof[], int count_prof);
-void prof_info(int sum_ages, int count_pr, int sum_wage, int max_wage, int min_wage, int sum_exp);

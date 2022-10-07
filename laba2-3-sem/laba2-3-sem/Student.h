@@ -18,9 +18,7 @@ struct Student
 };
 
 Student StudentInit(char *gr, int scholar, struct Human Human);
-void InputStud(int *age, int *scholar, char *num, char* ser, char* first, char* mid, char* last, char* gr);
 void OutputStud(struct Student stud[], int count_stud, bool flag);
 void ChangeInfo(struct Student stud[], int count_stud);
 void ChangeInfo_prof(struct Professor prof[], int count_prof);
 void stud_analysis(struct Student stud[], int count_stud);
-void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholarship, int min_scholarship);

@@ -17,29 +17,6 @@ Student StudentInit(char *gr, int scholar, struct Human human)
 	return stud;
 }
 
-void InputStud(int* age, int* scholar, char* num, char* ser, char* first, char* mid, char* last, char* gr)
-{
-	system("cls");
-	printf("Введите фамилию студента: ");
-	strcpy(last, write_str(29));
-	printf("Введите имя студента: ");
-	strcpy(first, write_str(29));
-	printf("Введите отчество студента: ");
-	strcpy(mid, write_str(29));
-	printf("Введите возраст: ");
-	*age = write_num(125);
-	printf("Введите номер паспорта: ");
-	strcpy(num, write_pd(4));
-	printf("Введите серию паспорта: ");
-	strcpy(ser, write_pd(6));
-	printf("Введите размер стипендии: ");
-	*scholar = write_num(100000);
-	printf("Введите номер группы: ");
-	char group[10];
-	gets_s(group);
-	strcpy(gr, group);
-}
-
 void OutputStud(struct Student stud[], int count_stud, bool flag)
 {
 	system("cls");
@@ -62,7 +39,6 @@ void OutputStud(struct Student stud[], int count_stud, bool flag)
 		_getch();
 	}
 }
-
 void ChangeInfo(struct Student stud[], int count_stud)
 {
 	int inp, stud_num = 0;
@@ -107,7 +83,6 @@ void ChangeInfo(struct Student stud[], int count_stud)
 		stud[stud_num].scholarship = write_num(100000);
 	}
 }
-
 void stud_analysis(struct Student stud[], int count_stud)
 {
 	system("cls");
@@ -140,13 +115,3 @@ void stud_analysis(struct Student stud[], int count_stud)
 	_getch();
 }
 
-void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholarship, int min_scholarship)
-{
-	printf("Статистика о студентах: \n\n");
-	printf("---------------------------------\n" );
-	printf("Средний возраст студента: %d\n", sum_ages / count_st);
-	printf("Средняя стипендия студента: %d\n", sum_scholarship / count_st);
-	printf("Максимальная стипендия студента: %d\n", max_scholarship);
-	printf("Минимальная стипендия студента: %d\n", min_scholarship);
-	printf("---------------------------------\n");
-}

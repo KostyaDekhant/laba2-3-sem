@@ -21,8 +21,8 @@ int main()
 	int inp;
 	Student *stud = (struct Student*)malloc(MAX_SIZE*sizeof(struct Student));
 	Professor *prof = (struct Professor*)malloc(MAX_SIZE*sizeof(struct Professor));
-	//Student stud[MAX_SIZE];
-	//Professor prof[MAX_SIZE];
+	/*Student stud[MAX_SIZE];
+	Professor prof[MAX_SIZE];*/
 	init_stud(stud, &count_stud);
 	init_prof(prof, &count_prof);
 	do {
