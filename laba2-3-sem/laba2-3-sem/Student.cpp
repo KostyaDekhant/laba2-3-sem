@@ -114,4 +114,3 @@ void stud_analysis(struct Student stud[], int count_stud)
 	printf("Нажмите любую клавишу, чтобы продолжить");
 	_getch();
 }
-
