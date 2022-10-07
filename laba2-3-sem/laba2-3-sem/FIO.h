@@ -5,9 +5,9 @@ using namespace std;
 
 struct FIO
 {
-	string firstname;
-	string middle;
-	string lastname;
+	char firstname[25];
+	char middle[25];
+	char lastname[25];
 };
 
-FIO FIOInit(string first, string mid, string last);
+FIO FIOInit(char *first, char* mid, char* last);
