@@ -6,6 +6,7 @@
 
 int write_num(int size);
 char* write_str(int size);
+//
 char* write_pd(int size);
 void print_choise();
 void act_choise(int inp, int* count_stud, int* count_prof, struct Student stud[], struct Professor* prof);

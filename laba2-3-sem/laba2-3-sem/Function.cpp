@@ -27,6 +27,7 @@ char *write_str(int size)
 {
 	bool correct;
 	char word[30];
+	//string word;
 	do {
 		correct = true;
 		gets_s(word);
