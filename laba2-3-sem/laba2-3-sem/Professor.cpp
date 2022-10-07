@@ -38,7 +38,6 @@ void OutputProf(struct Professor prof[], int count_prof, bool flag)
 		_getch();
 	}
 }
-
 void ChangeInfo_prof(struct Professor prof[], int count_prof)
 {
 	int inp, prof_num = 0;
@@ -88,7 +87,6 @@ void ChangeInfo_prof(struct Professor prof[], int count_prof)
 		prof[prof_num].experience = write_num(prof[prof_num].human.age);
 	}
 }
-
 void prof_analysis(struct Professor prof[], int count_prof)
 {
 	system("cls");

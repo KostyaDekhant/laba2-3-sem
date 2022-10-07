@@ -20,5 +20,4 @@ struct Student
 Student StudentInit(char *gr, int scholar, struct Human Human);
 void OutputStud(struct Student stud[], int count_stud, bool flag);
 void ChangeInfo(struct Student stud[], int count_stud);
-void ChangeInfo_prof(struct Professor prof[], int count_prof);
 void stud_analysis(struct Student stud[], int count_stud);
