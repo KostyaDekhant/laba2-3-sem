@@ -31,7 +31,6 @@ void Student::InputStud()
 }
 void Student::OutputStud(int i)
 {
-	system("cls");
 	cout << to_string(i + 1) + "-й человек: " << endl;
 	cout << "---------------------------------" << endl;
 	cout << "ФИО: " + this->human.fio.lastname + " " + this->human.fio.firstname + " " + this->human.fio.middle << endl;
@@ -41,6 +40,7 @@ void Student::OutputStud(int i)
 	cout << "Стипендия: " + to_string(this->scholarship) << endl;
 	cout << "---------------------------------\n\n" << endl;
 }
+
 //void ChangeInfo(struct Student stud[], int count_stud)
 //{
 //	int inp, stud_num = 0;
@@ -85,34 +85,26 @@ void Student::OutputStud(int i)
 //		stud[stud_num].scholarship = write_num(100000);
 //	}
 //}
-//void stud_analysis(struct Student stud[], int count_stud)
-//{
-//	system("cls");
-//	int stud_sum_age = 0, stud_sum_scholarship = 0, count_students = 0, max_scholarship = 0, min_scholarship = 0;
-//	int prof_sum_age = 0, prof_sum_wage = 0, count_professors = 0, max_wage = 0, min_wage = 0, sum_experience = 0;
-//	for (int i = 0; i < count_stud; i++)
-//	{
-//		if (!count_students)
-//		{
-//			max_scholarship = stud[i].scholarship;
-//			min_scholarship = stud[i].scholarship;
-//		}
-//		else if (stud[i].scholarship > max_scholarship)
-//		{
-//			max_scholarship = stud[i].scholarship;
-//		}
-//		else if (stud[i].scholarship < min_scholarship)
-//		{
-//			min_scholarship = stud[i].scholarship;
-//		}
-//		stud_sum_scholarship += stud[i].scholarship;
-//		count_students++;
-//		stud_sum_age += stud[i].human.age;
-//	}
-//	if (count_students)
-//		stud_info(stud_sum_age, count_students, stud_sum_scholarship, max_scholarship, min_scholarship);
-//	else
-//		printf("Данные не введены!\n\n");
-//	printf("Нажмите любую клавишу, чтобы продолжить");
-//	_getch();
-//}
+
+void Student::stud_analysis(int count_stud, int* stud_sum_age, int* stud_sum_scholarship,
+				   int *count_students, int* max_scholarship, int* min_scholarship)
+{
+	system("cls");
+	/*int prof_sum_age = 0, prof_sum_wage = 0, count_professors = 0, max_wage = 0, min_wage = 0, sum_experience = 0;*/
+	if (!*count_students)
+	{
+		*max_scholarship = this->scholarship;
+		*min_scholarship = this->scholarship;
+	}
+	else if (this->scholarship > *max_scholarship)
+	{
+		*max_scholarship = this->scholarship;
+	}
+	else if (this->scholarship < *min_scholarship)
+	{
+		*min_scholarship = this->scholarship;
+	}
+	*stud_sum_scholarship += this->scholarship;
+	*count_students += 1;
+	*stud_sum_age += this->human.age;
+}

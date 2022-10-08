@@ -93,13 +93,13 @@ void print_choise()
 
 void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholarship, int min_scholarship)
 {
-	printf("Статистика о студентах: \n\n");
-	printf("---------------------------------\n");
-	printf("Средний возраст студента: %d\n", sum_ages / count_st);
-	printf("Средняя стипендия студента: %d\n", sum_scholarship / count_st);
-	printf("Максимальная стипендия студента: %d\n", max_scholarship);
-	printf("Минимальная стипендия студента: %d\n", min_scholarship);
-	printf("---------------------------------\n");
+	cout << "Статистика о студентах: \n" << endl;;
+	cout << "---------------------------------" << endl;
+	cout << "Средний возраст студента: " + to_string(sum_ages / count_st) << endl;
+	cout << "Средняя стипендия студента: " + to_string(sum_scholarship / count_st) << endl;
+	cout << "Максимальная стипендия студента: " + to_string(max_scholarship) << endl;
+	cout << "Минимальная стипендия студента: " + to_string(min_scholarship) << endl;
+	cout << "---------------------------------" << endl;
 }
 
 void InputProf(int* age, int* wg, int* exp, string num, string ser, string first, string mid, string last, string sub)
@@ -127,14 +127,14 @@ void InputProf(int* age, int* wg, int* exp, string num, string ser, string first
 
 void prof_info(int sum_ages, int count_pr, int sum_wage, int max_wage, int min_wage, int sum_exp)
 {
-	printf("Статистика о преподавателях: \n\n");
-	printf("---------------------------------\n");
-	printf("Средний возраст преподавателя: %d\n", sum_ages / count_pr);
-	printf("Средняя стипендия преподавателя: %d\n", sum_wage / count_pr);
-	printf("Средний стаж преподавателя: %d\n", sum_exp / count_pr);
-	printf("Максимальная стипендия преподавателя: %d\n", max_wage);
-	printf("Минимальная стипендия преподавателя: %d\n", min_wage);
-	printf("---------------------------------\n");
+	cout << "Статистика о студентах: \n" << endl;;
+	cout << "---------------------------------" << endl;
+	cout << "Средний возраст преподавателя:: " + to_string(sum_ages / count_pr) << endl;
+	cout << "Средняя стипендия преподавателя:: " + to_string(sum_wage / count_pr) << endl;
+	cout << "Средний стаж преподавателя: " +  to_string(sum_exp / count_pr) << endl;
+	cout << "Максимальная зарплата: " + to_string(max_wage) << endl;
+	cout << "Минимальная зарплата: " + to_string(min_wage) << endl;
+	cout << "---------------------------------" << endl;
 }
 
 void act_choise(int inp, int *count_stud, int *count_prof, class Student *stud, class Professor prof[])
@@ -144,18 +144,16 @@ void act_choise(int inp, int *count_stud, int *count_prof, class Student *stud, 
 	if (inp == 1)
 	{
 		stud[*count_stud].InputStud();
-		/*stud[*count_stud] = ;*/
-		//stud[*count_stud] = Student(gr, last, first, mid, num, ser,scholar, age);
 		*count_stud += 1;
 	}
 	else if (inp == 2)
 	{
-		//InputProf(&age, &wg, &exp, num, ser, first, mid, last, sub);
-		//prof[*count_prof] = ProfessorInit(wg, exp, sub, HumanInit(age, FIOInit(first, mid, last), passport_dataInit(num, ser)));
+		prof[*count_prof].InputProf();
 		*count_prof += 1;
 	}
 	else if (inp == 3)
 	{
+		system("cls");
 		if (*count_stud)
 		{
 			for (int i = 0; i < *count_stud; i++)
@@ -172,15 +170,64 @@ void act_choise(int inp, int *count_stud, int *count_prof, class Student *stud, 
 	}
 	else if (inp == 4)
 	{
-		//OutputProf(prof, *count_prof, true);
+		system("cls");
+		if (*count_prof)
+		{
+			for (int i = 0; i < *count_prof; i++)
+			{
+				prof[i].OutputProf(i);
+			}
+		}
+		else
+		{
+			cout << "Данные не введены" << endl;
+		}
+		cout << "Нажмите любую клавишу, чтобы продолжить" << endl;
+		_getch();
 	}
 	else if (inp == 5)
 	{
-		//stud_analysis(stud, *count_stud);
+		int stud_sum_age = 0, stud_sum_scholarship = 0,
+			count_students = 0, max_scholarship = 0, min_scholarship = 0;
+		if (*count_stud)
+		{
+			for (int i = 0; i < *count_stud; i++)
+			{
+				stud[i].stud_analysis(*count_stud, &stud_sum_age, &stud_sum_scholarship,
+				&count_students, &max_scholarship, &min_scholarship);
+			}
+			stud_info(stud_sum_age, count_students, 
+				stud_sum_scholarship, max_scholarship, min_scholarship);
+		}
+		else
+		{
+			system("cls");
+			cout << "Данные не введены" << endl;
+		}
+		cout << "Нажмите любую клавишу, чтобы продолжить";
+		_getch();
 	}
 	else if (inp == 6)
 	{
-		//prof_analysis(prof, *count_prof);
+		int prof_sum_age = 0, prof_sum_wage = 0,
+			count_professors = 0, max_wage = 0, min_wage = 0, sum_experience = 0;
+		if (*count_prof)
+		{
+			for (int i = 0; i < *count_prof; i++)
+			{
+				prof[i].prof_analysis(*count_prof, &prof_sum_age, &prof_sum_wage,
+					&count_professors, &max_wage, &min_wage, &sum_experience);
+			}
+			prof_info(prof_sum_age, count_professors,
+				prof_sum_wage, max_wage, min_wage, sum_experience);
+		}
+		else
+		{
+			system("cls");
+			cout << "Данные не введены" << endl;
+		}
+		cout << "Нажмите любую клавишу, чтобы продолжить";
+		_getch();
 	}
 	else if (inp == 7)
 	{
@@ -218,7 +265,7 @@ int print_change_choise(class Student stud[], int count_stud)
 int print_change_choise_prof(struct Professor prof[], int count_prof)
 {
 	system("cls");
-	OutputProf(prof, count_prof, false);
+	//OutputProf(prof, count_prof, false);
 	if (!count_prof)
 	{
 		printf("\nНажмите любую клавишу, чтобы продолжить");

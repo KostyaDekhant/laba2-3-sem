@@ -13,6 +13,7 @@ int print_change_choise(struct Student stud[], int count_stud);
 int print_change_choise_prof(struct Professor prof[], int count_prof);
 void init_stud(struct Student stud[], int* count_stud);
 void init_prof(struct Professor prof[], int* count_prof);
+//
 //void InputStud(int* age, int* scholar, string num, string ser, string first, string mid, string last, string sub);
 void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholarship, int min_scholarship);
 void InputProf(int* age, int* wg, int* exp, string num, string ser, string first, string mid, string last, string sub);
