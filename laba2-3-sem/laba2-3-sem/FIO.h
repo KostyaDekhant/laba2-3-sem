@@ -3,11 +3,12 @@
 
 using namespace std;
 
-struct FIO
+class FIO
 {
-	char firstname[25];
-	char middle[25];
-	char lastname[25];
+public:
+	string firstname;
+	string middle;
+	string lastname;
 };
 
-FIO FIOInit(char *first, char* mid, char* last);
+//FIO FIOInit(char *first, char* mid, char* last);

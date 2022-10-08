@@ -10,14 +10,16 @@
 
 using namespace std;
 
-struct Student
+class Student
 {
-	struct Human human;
+public:
+	class Human human;
 	int scholarship;
-	char group[10];
+	string group;
+	void InputStud();
+	void OutputStud(int i);
 };
 
-Student StudentInit(char *gr, int scholar, struct Human Human);
-void OutputStud(struct Student stud[], int count_stud, bool flag);
+//Student StudentInit(char *gr, int scholar, struct Human Human);
 void ChangeInfo(struct Student stud[], int count_stud);
 void stud_analysis(struct Student stud[], int count_stud);

@@ -4,10 +4,13 @@
 #include <conio.h>
 #include <stdio.h>
 
-struct passport_data
+using namespace std;
+
+class passport_data
 {
-	char number[5];
-	char series[7];
+public:
+	string number;
+	string series;
 };
 
-passport_data passport_dataInit(char *num, char *ser);
+//passport_data passport_dataInit(char *num, char *ser);

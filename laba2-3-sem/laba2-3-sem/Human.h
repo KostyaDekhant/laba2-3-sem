@@ -4,11 +4,12 @@
 //#include "Student.h"
 //#include "Professor.h"
 
-struct Human
+class Human
 {
-	struct FIO fio;
-	struct passport_data pd;
+public:
+	class FIO fio;
+	class passport_data pd;
 	int age;
 };
 
-Human HumanInit(int inpage, struct FIO Fio, struct passport_data Pd);
+//Human HumanInit(int inpage, struct FIO Fio, struct passport_data Pd);

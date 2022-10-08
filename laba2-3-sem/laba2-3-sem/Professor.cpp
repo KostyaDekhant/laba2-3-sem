@@ -5,17 +5,17 @@
 #include "Professor.h"
 #include "Function.h"
 
-Professor ProfessorInit(int wg, int exp, char *sub, struct Human Human)
-{
-	Professor prof;
-	prof.human = Human;
-	prof.wage = wg;
-	prof.experience = exp;
-	strcpy(prof.subject,sub);
-	return prof;
-}
+//Professor ProfessorInit(int wg, int exp, char *sub, struct Human Human)
+//{
+//	Professor prof;
+//	prof.human = Human;
+//	prof.wage = wg;
+//	prof.experience = exp;
+//	strcpy(prof.subject,sub);
+//	return prof;
+//}
 
-void OutputProf(struct Professor prof[], int count_prof, bool flag)
+void OutputProf(class Professor prof[], int count_prof, bool flag)
 {
 	system("cls");
 	for (int i = 0; i < count_prof; i++)
@@ -50,19 +50,19 @@ void ChangeInfo_prof(struct Professor prof[], int count_prof)
 		return;
 	else if (inp == 1)
 	{
-		printf("¬ведите фамилию преподавател€: ");
+		/*printf("¬ведите фамилию преподавател€: ");
 		strcpy(prof[prof_num].human.fio.lastname, write_str(29));
 		printf("¬ведите им€ преподавател€: ");
 		strcpy(prof[prof_num].human.fio.firstname, write_str(29));
 		printf("¬ведите отчество преподавател€: ");
-		strcpy(prof[prof_num].human.fio.middle, write_str(29));
+		strcpy(prof[prof_num].human.fio.middle, write_str(29));*/
 	}
 	else if (inp == 2)
 	{
-		printf("¬ведите номер паспорта: ");
+		/*printf("¬ведите номер паспорта: ");
 		strcpy(prof[prof_num].human.pd.number, write_pd(4));
 		printf("¬ведите серию паспорта: ");
-		strcpy(prof[prof_num].human.pd.series, write_pd(6));
+		strcpy(prof[prof_num].human.pd.series, write_pd(6));*/
 	}
 	else if (inp == 3)
 	{
