@@ -5,16 +5,21 @@
 
 using namespace std;
 
-struct Professor
+class Professor
 {
+private:
 	int wage;
 	int experience;
-	char subject[25];
-	struct Human human;
+	string subject;
+	class Human human;
+public:
+	Professor();
+	Professor(int wg);
+	Professor(int wage, int experience, string subject, class Human human);
+	~Professor();
+	void InputProf();
+	void OutputProf(int i);
+	void prof_analysis(int count_prof, int* prof_sum_age, int* prof_sum_wage,
+		int* count_professors, int* max_wage, int* min_wage, int* sum_experience);
+	void ChangeInfo();
 };
-
-Professor ProfessorInit(int wg, int exp, char* sub, struct Human Human);
-void InputProf(int* age, int* wg, int* exp, char* num, char* ser, char* first, char* mid, char* last, char* sub);
-void OutputProf(struct Professor prof[], int count_prof, bool flag);
-void prof_analysis(struct Professor prof[], int count_prof);
-void prof_info(int sum_ages, int count_pr, int sum_wage, int max_wage, int min_wage, int sum_exp);

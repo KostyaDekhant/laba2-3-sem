@@ -10,17 +10,21 @@
 
 using namespace std;
 
-struct Student
+class Student
 {
-	struct Human human;
+private:
+	class Human human;
 	int scholarship;
-	char group[10];
-};
+	string group;
+public:
+	Student();
+	Student(class Human human);
+	Student(class Human human, int scholarship, string group);
+	~Student();
 
-Student StudentInit(char *gr, int scholar, struct Human Human);
-void InputStud(int *age, int *scholar, char *num, char* ser, char* first, char* mid, char* last, char* gr);
-void OutputStud(struct Student stud[], int count_stud, bool flag);
-void ChangeInfo(struct Student stud[], int count_stud);
-void ChangeInfo_prof(struct Professor prof[], int count_prof);
-void stud_analysis(struct Student stud[], int count_stud);
-void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholarship, int min_scholarship);
+	void InputStud();
+	void OutputStud(int i);
+	void stud_analysis(int count_stud, int* stud_sum_age, int* stud_sum_scholarship,
+		int* count_students, int* max_scholarship, int* min_scholarship);
+	void ChangeInfo();
+};

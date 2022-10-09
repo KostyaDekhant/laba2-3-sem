@@ -4,11 +4,51 @@
 #include <stdio.h>
 #include "FIO.h"
 
-FIO FIOInit(char *first, char* mid, char* last)
+FIO::FIO()
 {
-	FIO	fio;
-	strcpy(fio.firstname,first);
-	strcpy(fio.middle,mid);
-	strcpy(fio.lastname,last);
-	return fio;
+	this->firstname = "Иван";
+	this->middle = "Иванович";
+	this->lastname = "Иванов";
+}
+FIO::FIO(string first)
+{
+	this->firstname = first;
+	this->middle = "Иванович";
+	this->lastname = "Иванов";
+}
+FIO::FIO(string first, string mid, string last)
+{
+	this->firstname = first;
+	this->middle = mid;
+	this->lastname = last;
+}
+FIO::~FIO()
+{
+
+}
+
+string FIO::getFirst()
+{
+	return this->firstname;
+}
+string FIO::getMid()
+{
+	return this->middle;
+}
+string FIO::getLast()
+{
+	return this->lastname;
+}
+
+void FIO::setFirst(string first)
+{
+	firstname = first;
+}
+void FIO::setMid(string mid)
+{
+	middle = mid;
+}
+void FIO::setLast(string last)
+{
+	lastname = last;
 }

@@ -17,14 +17,10 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	bool exit = false;
-	int count_stud = 0, count_prof = 0;
+	int count_stud = 1, count_prof = 0;
 	int inp;
-	Student *stud = (struct Student*)malloc(MAX_SIZE*sizeof(struct Student));
-	Professor *prof = (struct Professor*)malloc(MAX_SIZE*sizeof(struct Professor));
-	//Student stud[MAX_SIZE];
-	//Professor prof[MAX_SIZE];
-	init_stud(stud, &count_stud);
-	init_prof(prof, &count_prof);
+	Student *stud = new class Student[MAX_SIZE];
+	Professor* prof = new class Professor[MAX_SIZE];
 	do {
 		print_choise();
 		inp = write_num(9);
@@ -33,6 +29,5 @@ int main()
 		else
 			act_choise(inp, &count_stud, &count_prof, stud, prof);
 	} while (!exit);
-	free(stud);
-	free(prof);
+	delete[] stud, prof;
 }
