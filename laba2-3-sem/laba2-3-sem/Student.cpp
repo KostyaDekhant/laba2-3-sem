@@ -8,22 +8,48 @@
 #include "Student.h"
 #include "Function.h"
 
+Student::Student()
+{
+	Human initHuman;
+	this->human = initHuman;
+	this->scholarship = 10000;
+	this->group = "ПИ11";
+}
+Student::Student(class Human human)
+{
+	this->human = human;
+	this->scholarship = 10000;
+	this->group = "ПИ11";
+}
+Student::Student(class Human human, int scholarship, string group)
+{
+	this->human = human;
+	this->scholarship = scholarship;
+	this->group = group;
+}
+Student::~Student()
+{
+
+}
 
 void Student::InputStud()
 {
 	system("cls");
+	string first, mid, last, num, ser;
 	cout << "Введите фамилию студента: ";
-	this->human.fio.lastname = write_str(29);
+	last = write_str(29);
 	cout << "Введите имя студента: ";
-	this->human.fio.firstname = write_str(29);
+	first = write_str(29);
 	cout << "Введите отчество студента: ";
-	this->human.fio.middle = write_str(29);
+	mid = write_str(29);
+	this->human.setFIO(first, mid, last);
 	cout << "Введите возраст: ";
-	this->human.age = write_num(125);
+	this->human.setAge(write_num(125));
 	cout << "Введите номер паспорта: ";
-	this->human.pd.number = write_pd(4);
+	num = write_pd(4);
 	cout << "Введите серию паспорта: ";
-	this->human.pd.series = write_pd(6);
+	ser = write_pd(6);
+	this->human.setPD(num, ser);
 	cout << "Введите размер стипендии: ";
 	this->scholarship = write_num(100000);
 	cout << "Введите номер группы: ";
@@ -33,64 +59,61 @@ void Student::OutputStud(int i)
 {
 	cout << to_string(i + 1) + "-й человек: " << endl;
 	cout << "---------------------------------" << endl;
-	cout << "ФИО: " + this->human.fio.lastname + " " + this->human.fio.firstname + " " + this->human.fio.middle << endl;
-	cout << "Паспортные данные: " + this->human.pd.number + " " + this->human.pd.series << endl;
-	cout << "Возраст: " + to_string(this->human.age) << endl;
+	cout << "ФИО: " + this->human.getFIO().getLast() + " " + this->human.getFIO().getFirst() + " " + this->human.getFIO().getMid() << endl;
+	cout << "Паспортные данные: " + this->human.getPD().getNum() + " " + this->human.getPD().getSer() << endl;
+	cout << "Возраст: " + to_string(this->human.getAge()) << endl;
 	cout << "Студент группы: " + this->group << endl;
 	cout << "Стипендия: " + to_string(this->scholarship) << endl;
 	cout << "---------------------------------\n\n" << endl;
 }
 
-//void ChangeInfo(struct Student stud[], int count_stud)
-//{
-//	int inp, stud_num = 0;
-//	stud_num = print_change_choise(stud, count_stud);
-//	if (!stud_num)
-//		return;
-//	stud_num--;
-//	inp = write_num(6);
-//	if (inp == 6)
-//		return;
-//	else if (inp == 1)
-//	{
-//		printf("Введите фамилию студента: ");
-//		strcpy(stud[stud_num].human.fio.lastname, write_str(29));
-//		printf("Введите имя студента: ");
-//		strcpy(stud[stud_num].human.fio.firstname, write_str(29));
-//		printf("Введите отчество студента: ");
-//		strcpy(stud[stud_num].human.fio.middle, write_str(29));
-//	}
-//	else if (inp == 2)
-//	{
-//		printf("Введите номер паспорта: ");
-//		strcpy(stud[stud_num].human.pd.number, write_pd(4));
-//		printf("Введите серию паспорта: ");
-//		strcpy(stud[stud_num].human.pd.series, write_pd(6));
-//	}
-//	else if (inp == 3)
-//	{
-//		printf("Введите возраст: ");
-//		stud[stud_num].human.age = write_num(125);
-//	}
-//	else if (inp == 4)
-//	{
-//		printf("Введите номер группы: ");
-//		char group[10];
-//		gets_s(group);
-//		strcpy(stud[stud_num].group, group);
-//	}
-//	else if (inp == 5)
-//	{
-//		printf("Введите размер стипендии: ");
-//		stud[stud_num].scholarship = write_num(100000);
-//	}
-//}
+void Student::ChangeInfo()
+{
+	int inp;
+	inp = write_num(6);
+	if (inp == 6)
+		return;
+	else if (inp == 1)
+	{
+		string first, mid, last;
+		cout << "Введите фамилию студента: ";
+		last = write_str(29);
+		cout << "Введите имя студента: ";
+		first = write_str(29);
+		cout << "Введите отчество студента: ";
+		mid = write_str(29);
+		this->human.setFIO(first, mid, last);
+	}
+	else if (inp == 2)
+	{
+		string num, ser;
+		cout << "Введите номер паспорта: ";
+		num = write_pd(4);
+		cout << "Введите серию паспорта: ";
+		ser = write_pd(6);
+		this->human.setPD(num, ser);
+	}
+	else if (inp == 3)
+	{
+		cout << "Введите возраст: ";
+		this->human.setAge(write_num(125));
+	}
+	else if (inp == 4)
+	{
+		cout << "Введите номер группы: ";
+		cin >> this->group;
+	}
+	else if (inp == 5)
+	{
+		cout << "Введите размер стипендии: ";
+		this->scholarship = write_num(100000);
+	}
+}
 
 void Student::stud_analysis(int count_stud, int* stud_sum_age, int* stud_sum_scholarship,
 				   int *count_students, int* max_scholarship, int* min_scholarship)
 {
 	system("cls");
-	/*int prof_sum_age = 0, prof_sum_wage = 0, count_professors = 0, max_wage = 0, min_wage = 0, sum_experience = 0;*/
 	if (!*count_students)
 	{
 		*max_scholarship = this->scholarship;
@@ -106,5 +129,5 @@ void Student::stud_analysis(int count_stud, int* stud_sum_age, int* stud_sum_sch
 	}
 	*stud_sum_scholarship += this->scholarship;
 	*count_students += 1;
-	*stud_sum_age += this->human.age;
+	*stud_sum_age += this->human.getAge();
 }

@@ -14,10 +14,10 @@ int write_num(int size)
 	do {
 		while (scanf("%d", &inp) != 1) {
 			while (getchar() != '\n');
-			printf("Ошибка. Введите число: ");
+			cout << "Ошибка. Введите число: ";
 		}
 		if (inp < 1 || inp > size)
-			printf("Введено неправильное число, введите ещё раз: \n");
+			cout << "Введено неправильное число, введите ещё раз: ";
 	} while (inp < 1 || inp > size);
 	while (getchar() != '\n');
 	return inp;
@@ -79,16 +79,16 @@ string write_pd(int size)
 void print_choise()
 {
 	system("cls");
-	printf("Выберите действие:\n"
-		"1. Ввести данные о студенте\n"
-		"2. Ввести данные о преподавателе\n"
-		"3. Вывести данные о студентах\n"
-		"4. Вывести данные о преподавателях\n"
-		"5. Анализ информации о студентах\n"
-		"6. Анализ информации о преподавателях\n"
-		"7. Изменить данные о студентах\n"
-		"8. Изменить данные о преподателях\n"
-		"9. Закончить работу.\n");
+	cout << "Выберите действие:" << endl;
+	cout << "1. Ввести данные о студенте" << endl;
+	cout << "2. Ввести данные о преподавателе" << endl;
+	cout << "3. Вывести данные о студентах" << endl;
+	cout << "4. Вывести данные о преподавателях" << endl;
+	cout << "5. Анализ информации о студентах" << endl;
+	cout << "6. Анализ информации о преподавателях" << endl;
+	cout << "7. Изменить данные о студентах" << endl;
+	cout << "8. Изменить данные о преподателях" << endl;
+	cout << "9. Закончить работу." << endl;
 }
 
 void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholarship, int min_scholarship)
@@ -102,42 +102,19 @@ void stud_info(int sum_ages, int count_st, int sum_scholarship, int max_scholars
 	cout << "---------------------------------" << endl;
 }
 
-void InputProf(int* age, int* wg, int* exp, string num, string ser, string first, string mid, string last, string sub)
-{
-	system("cls");
-	cout << "Введите фамилию преподавателя: ";
-	last = write_str(29);
-	cout << "Введите имя преподавателя: ";
-	first = write_str(29);
-	cout << "Введите отчество преподавателя: ";
-	mid = write_str(29);
-	cout << "Введите возраст: ";
-	*age = write_num(125);
-	cout << "Введите номер паспорта: ";
-	num = write_str(4);
-	cout << "Введите серию паспорта: ";
-	ser = write_str(6);
-	cout << "Введите стаж преподавателя: ";
-	*exp = write_num(*age);
-	cout << "Введите размер заработной платы: ";
-	*wg = write_num(1000000);
-	cout << "Введите преподаваемый предмет: ";
-	cin >> sub;
-}
-
 void prof_info(int sum_ages, int count_pr, int sum_wage, int max_wage, int min_wage, int sum_exp)
 {
 	cout << "Статистика о студентах: \n" << endl;;
 	cout << "---------------------------------" << endl;
-	cout << "Средний возраст преподавателя:: " + to_string(sum_ages / count_pr) << endl;
-	cout << "Средняя стипендия преподавателя:: " + to_string(sum_wage / count_pr) << endl;
+	cout << "Средний возраст преподавателя: " + to_string(sum_ages / count_pr) << endl;
+	cout << "Средняя зарплата преподавателя: " + to_string(sum_wage / count_pr) << endl;
 	cout << "Средний стаж преподавателя: " +  to_string(sum_exp / count_pr) << endl;
 	cout << "Максимальная зарплата: " + to_string(max_wage) << endl;
 	cout << "Минимальная зарплата: " + to_string(min_wage) << endl;
 	cout << "---------------------------------" << endl;
 }
 
-void act_choise(int inp, int *count_stud, int *count_prof, class Student *stud, class Professor prof[])
+void act_choise(int inp, int *count_stud, int *count_prof, class Student *stud, class Professor *prof)
 {
 	int age = 0, scholar = 0, wg = 0, exp = 0; string num = "" ,ser = "", first = "", mid = "",
 		last = "", gr = "",  sub = "";
@@ -231,85 +208,72 @@ void act_choise(int inp, int *count_stud, int *count_prof, class Student *stud, 
 	}
 	else if (inp == 7)
 	{
-		//ChangeInfo(stud, *count_stud);
+		if (*count_stud)
+		{
+			int stud_num = 0;
+			print_change_choise(stud, *count_stud, &stud_num);
+			stud[stud_num-1].ChangeInfo();
+		}
+		else
+		{
+			cout << "Данные не введены" << endl;
+			cout << "Нажмите любую клавишу, чтобы продолжить" << endl;
+			_getch();
+		}
 	}
 	else if (inp == 8)
 	{
-		//ChangeInfo_prof(prof, *count_prof);
+		if (*count_prof)
+		{
+			int prof_num = 0;
+			print_change_choise_prof(prof, *count_prof, &prof_num);
+			prof[prof_num - 1].ChangeInfo();
+		}
+		else
+		{
+			cout << "Данные не введены" << endl;
+			cout << "Нажмите любую клавишу, чтобы продолжить" << endl;
+			_getch();
+		}
 	}
 }
 
-int print_change_choise(class Student stud[], int count_stud)
+void print_change_choise(class Student stud[], int count_stud, int *stud_num)
 {
 	system("cls");
-	//OutputStud(stud, count_stud, false);
-	if (!count_stud)
+	for (int i = 0; i < count_stud; i++)
 	{
-		printf("\nНажмите любую клавишу, чтобы продолжить");
-		_getch();
-		return 0;
+		stud[i].OutputStud(i);
 	}
-	printf("Выберите номер студента: ");
-	int stud_num = write_num(count_stud);
+	cout << "Выберите номер студента: ";
+	*stud_num = write_num(count_stud);
 	system("cls");
-	printf("Выберите, что нужно изменить: \n"
-		"1. ФИО\n"
-		"2. Паспортные данные\n"
-		"3. Возраст\n"
-		"4. Группа\n"
-		"5. Размер стипендии\n\n"
-		"6. Вернуться обратно\n");
-	return stud_num;
+	cout << "Выберите, что нужно изменить: " << endl;
+	cout << "1. ФИО" << endl;
+	cout << "2. Паспортные данные" << endl;
+	cout << "3. Возраст" << endl;
+	cout << "4. Группа" << endl;
+	cout << "5. Размер стипендии\n" << endl;
+	cout << "6. Вернуться обратно" << endl;
 }
 
-int print_change_choise_prof(struct Professor prof[], int count_prof)
+void print_change_choise_prof(class Professor prof[], int count_prof, int *prof_num)
 {
 	system("cls");
-	//OutputProf(prof, count_prof, false);
-	if (!count_prof)
+	for (int i = 0; i < count_prof; i++)
 	{
-		printf("\nНажмите любую клавишу, чтобы продолжить");
-		_getch();
-		return 0;
+		prof[i].OutputProf(i);
 	}
-	printf("Выберите номер преподавателя: ");
-	int stud_num = write_num(count_prof);
+	cout << "Выберите номер преподавателя : " << endl;
+	*prof_num = write_num(count_prof);
 	system("cls");
-	printf("Выберите, что нужно изменить: \n"
-		"1. ФИО\n"
-		"2. Паспортные данные\n"
-		"3. Возраст\n"
-		"4. Предмет\n"
-		"5. Размер зарплаты\n"
-		"6. Стаж преподавателя\n\n"
-		"7. Вернуться обратно\n");
-	return stud_num;
+	cout << "Выберите, что нужно изменить: " << endl;
+	cout << "1. ФИО" << endl;
+	cout << "2. Паспортные данные" << endl;
+	cout << "3. Возраст" << endl;
+	cout << "4. Предмет" << endl;
+	cout << "5. Размер зарплаты" << endl;
+	cout << "6. Стаж преподавателя\n" << endl;
+	cout << "7. Вернуться обратно" << endl;
 }
 
-void init_stud(struct Student stud[], int *count_stud)
-{
-	char gr[10] = "ПИ11", f[25] = "Васильев", i[25] = "Иван", o[25] = "Петрович", num[5] = "1234", ser[7] = "567890";
-	//stud[0] = StudentInit(gr, 10000, HumanInit(19, FIOInit(i, o, f), passport_dataInit(num, ser)));
-	strcpy(f, "Соболев");
-	strcpy(i, "Игорь");
-	strcpy(o, "Александрович");
-	strcpy(num, "0987");
-	strcpy(ser, "654321");
-	//stud[1] = StudentInit(gr, 8000, HumanInit(18, FIOInit(i, o, f), passport_dataInit(num, ser)));
-	*count_stud += 2;
-}
-
-void init_prof(struct Professor prof[], int *count_prof)
-{
-	char f[25] = "Петров", i[25] = "Алексей", o[25] = "Константинович", num[5] = "1234", 
-		ser[7] = "567890", sub[20] = "Математика";
-	//prof[0] = ProfessorInit(25000, 20, sub, HumanInit(45, FIOInit(i, o ,f), passport_dataInit(num, ser)));
-	strcpy(f, "Иванов");
-	strcpy(i, "Иван");
-	strcpy(o, "Иванович");
-	strcpy(num, "8765");
-	strcpy(ser, "094321");
-	strcpy(sub, "Физика");
-	//prof[1] = ProfessorInit(20000, 15, sub, HumanInit(40, FIOInit(i, o, f), passport_dataInit(num, ser)));
-	*count_prof += 2;
-}

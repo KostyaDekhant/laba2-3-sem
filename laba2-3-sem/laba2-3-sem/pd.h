@@ -8,9 +8,19 @@ using namespace std;
 
 class passport_data
 {
-public:
+private:
 	string number;
 	string series;
+public:
+	string getNum();
+	string getSer();
+
+	void setNum(string num);
+	void setSer(string ser);
+
+	passport_data();
+	passport_data(string num);
+	passport_data(string num, string ser);
+	~passport_data();
 };
 
-//passport_data passport_dataInit(char *num, char *ser);

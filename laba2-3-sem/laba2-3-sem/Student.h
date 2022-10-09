@@ -17,11 +17,14 @@ private:
 	int scholarship;
 	string group;
 public:
+	Student();
+	Student(class Human human);
+	Student(class Human human, int scholarship, string group);
+	~Student();
+
 	void InputStud();
 	void OutputStud(int i);
 	void stud_analysis(int count_stud, int* stud_sum_age, int* stud_sum_scholarship,
 		int* count_students, int* max_scholarship, int* min_scholarship);
+	void ChangeInfo();
 };
-
-//Student StudentInit(char *gr, int scholar, struct Human Human);
-void ChangeInfo(struct Student stud[], int count_stud);
